@@ -22,7 +22,7 @@ export const placeShotgunRequest = async (event: APIGatewayProxyEvent): Promise<
     // We check if the shotgun has already been won
     if (shotgunWinningTrigramme)
         return {
-            statusCode: 400,
+            statusCode: 200,
             body: JSON.stringify({ message: `Shotgun already won by ${shotgunWinningTrigramme}` }),
         };
     // We set the winning trigramme and return the congratulations message
