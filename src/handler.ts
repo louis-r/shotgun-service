@@ -13,7 +13,7 @@ export async function placeShotgunRequest(event: APIGatewayProxyEvent): Promise<
     console.log(event);
     // We parse the body of the event received, and throw an error if it is not valid
     const requestPayload = requestValidator.parse(JSON.parse(event.body));
-    // We log some information about the rqeuest
+    // We log some information about the request
     // We check if the shotgun is not opened yet
     if (Date.now() < shotgunStartTime.getTime())
         return {
