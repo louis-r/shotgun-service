@@ -8,11 +8,12 @@ const requestValidator = z.object({
 const shotgunStartTime = new Date('2024-02-01T15:39:00.000Z');
 let shotgunWinningTrigramme: string | undefined = undefined;
 
-export const placeShotgunRequest = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+export async function placeShotgunRequest(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {
     // We start by logging the event received
     console.log(event);
     // We parse the body of the event received, and throw an error if it is not valid
     const requestPayload = requestValidator.parse(JSON.parse(event.body));
+    // We log some information about the rqeuest
     // We check if the shotgun is not opened yet
     if (Date.now() < shotgunStartTime.getTime())
         return {
@@ -31,4 +32,4 @@ export const placeShotgunRequest = async (event: APIGatewayProxyEvent): Promise<
         statusCode: 200,
         body: JSON.stringify({ message: `You won the shotgun, congrats ${shotgunWinningTrigramme}!` }),
     };
-};
+}
