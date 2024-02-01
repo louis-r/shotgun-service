@@ -5,7 +5,7 @@ const requestValidator = z.object({
     trigramme: z.string(),
 });
 
-const shotgunStartDate = new Date('2024-02-01T15:39:00.000Z');
+const shotgunStartTime = new Date('2024-02-01T15:39:00.000Z');
 let shotgunWinningTrigramme: string | undefined = undefined;
 
 export const placeShotgunRequest = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
@@ -14,7 +14,7 @@ export const placeShotgunRequest = async (event: APIGatewayProxyEvent): Promise<
     // We parse the body of the event received, and throw an error if it is not valid
     const requestPayload = requestValidator.parse(JSON.parse(event.body));
     // We check if the shotgun is not opened yet
-    if (Date.now() < shotgunStartDate.getTime())
+    if (Date.now() < shotgunStartTime.getTime())
         return {
             statusCode: 400,
             body: JSON.stringify({ message: 'Shotgun has not started yet' }),
