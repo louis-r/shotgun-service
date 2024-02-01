@@ -1,0 +1,20 @@
+service: shotgun-service
+
+plugins:
+    - serverless-esbuild
+
+provider:
+    name: aws
+    region: eu-west-1
+    stage: dev
+    runtime: nodejs16.x
+    environment:
+        REGION: eu-west-1
+
+functions:
+    placeShotgunRequest:
+        handler: src/handler.placeShotgunRequest
+        events:
+            - httpApi:
+                  path: /place-shotgun-request
+                  method: post

@@ -1,0 +1,26 @@
+# Package directories
+node_modules
+jspm_packages
+
+# Script directory
+scripts/
+
+# Deployment scripts
+deploy.sh
+deploy-dev.sh
+
+# Serverless directories
+.serverless
+
+# Typescript build directory
+.build
+
+# Unit test coverage reports
+coverage/
+junit.xml
+
+.DS_Store
+
+# IDEs directories
+.idea/
+.vscode/
